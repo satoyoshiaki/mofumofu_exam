@@ -24,7 +24,7 @@ class HomesController < ApplicationController
   def create
     @home = Home.new(home_params)
       if @home.save
-        redirect_to @home, notice: 'Home was successfully created.'
+        redirect_to @home, notice: '物件情報を登録しました。'
       else
         render :new 
       end
@@ -33,7 +33,7 @@ class HomesController < ApplicationController
 
   def update
       if @home.update(home_params)
-        redirect_to @home, notice: 'Home was successfully updated.' 
+        redirect_to @home, notice: '物件情報を更新しました。' 
       else
         render :edit
       end
@@ -42,7 +42,7 @@ class HomesController < ApplicationController
 
   def destroy
     @home.destroy
-      redirect_to homes_url, notice: 'Home was successfully destroyed.'
+      redirect_to homes_url, notice: '物件情報を削除しました。'
   end
 
   private

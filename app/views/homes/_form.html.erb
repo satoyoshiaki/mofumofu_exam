@@ -10,38 +10,38 @@
   </div>
 <% end %>
 <div>
-  <div><%= f.label :name %></div>
+  <div><%= f.label :物件名 %></div>
   <div><%= f.text_field :name %></div>
 </div>
 <div>
-  <div><%= f.label :money %></div>
+  <div><%= f.label :賃料 %></div>
   <div><%= f.text_field :money %>円</div>
 </div>
 <div>
-  <div><%= f.label :address %></div>
+  <div><%= f.label :住所 %></div>
   <div><%= f.text_field :address %></div>
 </div>
 <div>
-  <div><%= f.label :age %></div>
+  <div><%= f.label :築年数 %></div>
   <div><%= f.text_field :age %>年</div>
 </div>
 <div>
-  <div><%= f.label :context %></div>
+  <div><%= f.label :備考 %></div>
   <div><%= f.text_area :context %></div>
 </div>
 <% number = 0 %>
 <%= f.fields_for :detail do |f| %>
   <h3>最寄り駅<%= number += 1 %></h3>
   <div>
-    <div><%= f.label :route_name %></div>
+    <div><%= f.label :路線名 %></div>
     <div><%= f.text_field :route_name %></div>
   </div>
   <div>
-    <div><%= f.label :station_name %></div>
+    <div><%= f.label :駅名 %></div>
     <div><%= f.text_field :station_name %></div>
   </div>
   <div>
-    <div><%= f.label :distance %></div>
+    <div><%= f.label :徒歩分数 %></div>
     <div><%= f.text_field :distance %>分</div>
   </div>
   <% if @home.persisted? %>
