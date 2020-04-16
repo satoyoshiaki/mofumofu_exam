@@ -1,0 +1,53 @@
+<%= form_with(model: home, local: true) do |f| %>
+  <% if home.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(home.errors.count, "error") %> prohibited this home from being saved:</h2>
+    <ul>
+    <% home.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div>
+  <div><%= f.label :物件名 %></div>
+  <div><%= f.text_field :name %></div>
+</div>
+<div>
+  <div><%= f.label :賃料 %></div>
+  <div><%= f.text_field :money %>円</div>
+</div>
+<div>
+  <div><%= f.label :住所 %></div>
+  <div><%= f.text_field :address %></div>
+</div>
+<div>
+  <div><%= f.label :築年数 %></div>
+  <div><%= f.text_field :age %>年</div>
+</div>
+<div>
+  <div><%= f.label :備考 %></div>
+  <div><%= f.text_area :context %></div>
+</div>
+<% number = 0 %>
+<%= f.fields_for :detail do |f| %>
+  <h3>最寄り駅<%= number += 1 %></h3>
+  <div>
+    <div><%= f.label :路線名 %></div>
+    <div><%= f.text_field :route_name %></div>
+  </div>
+  <div>
+    <div><%= f.label :駅名 %></div>
+    <div><%= f.text_field :station_name %></div>
+  </div>
+  <div>
+    <div><%= f.label :徒歩分数 %></div>
+    <div><%= f.text_field :distance %>分</div>
+  </div>
+  <% if @home.persisted? %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "削除" %>
+  <% end %>
+<% end %>
+<div><%= f.submit nil %></div>
+<% end %>
