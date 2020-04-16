@@ -1,29 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @home.name %>
-</p>
-
-<p>
-  <strong>Money:</strong>
-  <%= @home.money %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @home.address %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @home.age %>
-</p>
-
-<p>
-  <strong>Context:</strong>
-  <%= @home.context %>
-</p>
-
-<%= link_to 'Edit', edit_home_path(@home) %> |
-<%= link_to 'Back', homes_path %>
+<h1>閲覧</h1>
+<div class="home_show">
+  <li class="home_list"> 物件名:<%= @home.name %> </li>
+  <li class="home_list"> 賃料:<%= @home.money.to_s(:delimited) %>円 </li>
+  <li class="home_list"> 住所:<%= @home.address %> </li>
+  <li class="home_list"> 築年数 <%= @home.age %>年 </li>
+ 
+</div>
+<div class="place_show">
+  <% @home.detail.each_with_index do |detail, index| %>
+    <h2>最寄り駅<%= index += 1 %></h2>
+    <li class="detail_list"> 路線名 <%= detail.route_name %> </li>
+    <li class="detail_list"> 駅名 <%= detail.station_name %> </li>
+    <li class="detail_list"> 徒歩分数 <%= detail.distance %>分 </li>
+  <% end %>
+</div>
+<div>
+  <%= link_to "編集", edit_home_path(@home) %>
+  <%= link_to '戻る', homes_path %>
+</div>
